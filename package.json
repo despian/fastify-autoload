@@ -5,9 +5,12 @@
   "main": "index.js",
   "typings": "fastify-autoload.d.ts",
   "scripts": {
-    "lint:typescript": "eslint --ext .ts .",
-    "test": "standard | snazzy && tap test/*.js && npm run typescript",
-    "typescript": "npm run lint:typescript && tsc --project ./tsconfig.json && tap test/*.ts"
+    "lint:js": "standard | snazzy ",
+    "lint:ts": "eslint --ext .ts .",
+    "lint": "npm run lit:js && npm run lint:ts",
+    "test:js": "npm run lint:js && tap test/*.js",
+    "test:ts": "npm run lint:ts && tsc --project ./tsconfig.json && tap test/*.ts",
+    "test": "npm run test:js && npm run test:ts"
   },
   "repository": {
     "type": "git",

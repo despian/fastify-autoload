@@ -4,6 +4,9 @@ node_js:
   - "9"
   - "8"
   - "6"
+    # don't run ts tests on node 6
+    script:
+      - npm run test:js
   - "10"
 
 notifications:
