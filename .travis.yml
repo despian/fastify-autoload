@@ -9,14 +9,15 @@ node_js:
 # don't run ts tests on node 6
 stages:
   - name: test
-    if: TRAVIS_NODE_VERSION != "6"
-  - name: test:js-only
     if: TRAVIS_NODE_VERSION = "6"
+  - name: test:js-only
+    if: TRAVIS_NODE_VERSION != "6"
 
 jobs:
   include:
     - stage: test:js-only
       script:
+        - echo $TRAVIS_NODE_VERSION
         - npm run test:js
 
 notifications:
