@@ -4,10 +4,20 @@ node_js:
   - "9"
   - "8"
   - "6"
-    # don't run ts tests on node 6
-    script:
-      - npm run test:js
   - "10"
+
+# don't run ts tests on node 6
+stages:
+  - test
+    if: TRAVIS_NODE_VERSION != "6"
+  - name: test:js-only
+    if: TRAVIS_NODE_VERSION = "6"
+
+jobs:
+  include:
+    - stage: test:js-only
+      script:
+        - npm run test:js
 
 notifications:
   email:
